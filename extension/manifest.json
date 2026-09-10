@@ -1,0 +1,44 @@
+{
+    "manifest_version": 3,
+    "name": "Erome Downloader",
+    "version": "1.0.0",
+    "description": "Baixe álbuns com uma interface simples.",
+    "action": {
+        "default_title": "Erome Downloader"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "activeTab",
+        "storage",
+        "scripting"
+    ],
+    "host_permissions": [
+        "http://127.0.0.1:8765/*",
+        "http://localhost:8765/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.erome.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "popup.html",
+                "popup.css",
+                "popup.js"
+            ],
+            "matches": [
+                "https://www.erome.com/*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,3 @@
+[console_scripts]
+erome-web = web_server:serve
+eromedump = dump:main

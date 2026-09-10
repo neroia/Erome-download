@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Erome download</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <main class="shell">
+        <header>
+
+            <h1>Erome<br><em>download</em></h1>
+            <p class="intro">Cole o endereço de um álbum e salve tudo na pasta de vídeos.</p>
+        </header>
+        <form id="download-form">
+            <label for="url">Endereço do álbum</label>
+            <input id="url" name="url" type="url" placeholder="https://www.erome.com/a/..." required>
+            <label class="check auto-link">
+                <input id="use-current-page" type="checkbox">
+                <span>Usar automaticamente o link desta página</span>
+            </label>
+            <section class="options">
+                <label class="check"><input id="skip-videos" type="checkbox"><span>Não baixar vídeos</span></label>
+                <label class="check"><input id="skip-images" type="checkbox"><span>Não baixar imagens</span></label>
+            </section>
+            <div class="advanced">
+                <label for="connections">Downloads simultâneos <output id="connections-value">5</output></label>
+                <input id="connections" type="range" min="1" max="20" value="5">
+            </div>
+            <button id="start" type="submit"><span>Baixar álbum</span><b>↗</b></button>
+        </form>
+        <div id="status" class="status" data-kind="idle">Conectando ao aplicativo...</div>
+        <div class="download-progress" aria-label="Progresso do download">
+            <div id="progress-bar"></div>
+        </div>
+        <div class="progress-meta">
+            <strong id="progress-label">0%</strong>
+            <span id="files-label">0 arquivos</span>
+        </div>
+        <p class="hint">Os arquivos ficam em <strong>Vídeos/EromeDownload/</strong>.</p>
+    </main>
+    <script src="popup.js"></script>
+</body>
+
+</html>

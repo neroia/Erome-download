@@ -1,0 +1,14 @@
+README.md
+dump.py
+pyproject.toml
+web_server.py
+eromedownloader.egg-info/PKG-INFO
+eromedownloader.egg-info/SOURCES.txt
+eromedownloader.egg-info/dependency_links.txt
+eromedownloader.egg-info/entry_points.txt
+eromedownloader.egg-info/requires.txt
+eromedownloader.egg-info/top_level.txt
+tests/test_cli.py
+tests/test_collect_album_data.py
+tests/test_download.py
+tests/test_helpers.py
