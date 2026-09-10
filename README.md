@@ -2,6 +2,10 @@
 
 > Extensão para **Chrome** e **Chromium** que adiciona um painel lateral de download às páginas do Erome, permitindo baixar álbuns completos com um clique.
 
+<p align="center">
+  <img src=".github/img.png" alt="Erome-download em funcionamento" width="600">
+</p>
+
 Os arquivos são salvos automaticamente em:
 
 ```text
