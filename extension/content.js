@@ -11,24 +11,24 @@ function addSidebarStyle() {
     style.id = STYLE_ID;
     style.textContent = `
         #${SIDEBAR_ID} {
-            position: sticky !important;
+            position: fixed !important;
             top: 0 !important;
-            flex: 0 0 380px !important;
+            right: 0 !important;
             width: 380px !important;
             height: 100vh !important;
             min-height: 100vh !important;
+            z-index: 2147483647 !important;
             border-left: 1px solid #454045 !important;
             background: #262626 !important;
             box-shadow: -5px 0 20px rgba(0, 0, 0, .35) !important;
         }
         html.${PAGE_CLASS} body {
-            display: flex !important;
-            align-items: stretch !important;
-            width: 100% !important;
-            margin: 0 !important;
+            width: calc(100% - 380px) !important;
+            max-width: calc(100% - 380px) !important;
+            margin-right: 380px !important;
         }
         html.${PAGE_CLASS} #${CONTENT_ID} {
-            flex: 1 1 auto !important;
+            width: 100% !important;
             min-width: 0 !important;
         }
         #${SIDEBAR_ID} iframe {
