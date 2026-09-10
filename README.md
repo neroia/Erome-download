@@ -1,215 +1,94 @@
-# EromeDownloader V3
+# Erome Downloader
 
-![tests](https://github.com/M4p4/EromeDownloader/actions/workflows/tests.yml/badge.svg)
+Extensão para Chrome e Chromium que adiciona um downloader na lateral das
+páginas do Erome.
 
-A compact yet powerful Python script for downloading albums from
-erome.com, including videos, images, and gifs.
-
-## Features
-
-- Download a single album or batch-download many albums from a URL list
-- Concurrent downloads with a configurable connection limit
-- Automatic retries with exponential backoff
-- Resumes intelligently by skipping files that are already fully downloaded
-- Optional filters to skip videos or images
-- Live progress bars per file and per album
-
-## Requirements
-
-- Python 3.10 or newer
-
-## Installation
-
-Clone the repository and move into it:
-
-```bash
-git clone https://github.com/M4p4/EromeDownloader.git
-cd EromeDownloader
-```
-
-Create and activate a virtual environment so the dependencies stay isolated from
-your system Python.
-
-**macOS / Linux**
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-**Windows (PowerShell)**
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-Then install the dependencies:
-
-```bash
-pip install -r requirements.txt
-pip install -e .
-```
-
-When you are done, deactivate the virtual environment with `deactivate`.
-
-### Install as a command (optional)
-
-You can install the project so it exposes an `eromedump` command, letting you
-run it from anywhere without typing `python dump.py`:
-
-```bash
-pip install -e .
-```
-
-After this, both invocation styles work identically:
-
-```bash
-eromedump -u https://www.erome.com/a/xxxxxxxx
-python dump.py -u https://www.erome.com/a/xxxxxxxx
-```
-
-The `eromedump` command is available while the virtual environment it was
-installed into is active.
-
-## Extensão para o navegador
-
-O projeto inclui uma extensão para Chrome e Chromium. Ela aparece dentro da
-página do Erome, na lateral direita, e salva os arquivos em:
+Os arquivos são salvos automaticamente em:
 
 ```text
 Vídeos/EromeDownload/Nome do álbum/
 ```
 
-### Primeira instalação
+## Baixar o projeto
 
-Faça esta etapa apenas uma vez:
+### Opção 1: baixar como ZIP
 
-1. Abra `chrome://extensions` no navegador.
+1. Abra o repositório no GitHub:
+   [github.com/neroia/Erome-download](https://github.com/neroia/Erome-download)
+2. Clique no botão **Code**.
+3. Clique em **Download ZIP**.
+4. Extraia o arquivo ZIP em uma pasta do computador.
+
+### Opção 2: clonar com Git
+
+Se o Git estiver instalado, execute:
+
+```bash
+git clone https://github.com/neroia/Erome-download.git
+cd Erome-download
+```
+
+Depois de baixar ou clonar, siga as instruções de instalação da extensão e
+inicialização do sistema abaixo.
+
+## Instalação da extensão
+
+Essa etapa precisa ser feita apenas uma vez:
+
+1. Abra `chrome://extensions` no Chrome ou Chromium.
 2. Ative **Modo do desenvolvedor**.
 3. Clique em **Carregar sem compactação**.
 4. Selecione a pasta `extension/` deste projeto.
 
-### Iniciar no Windows
+## Iniciar no Windows
 
 1. Abra a pasta do projeto.
 2. Dê duplo clique em `iniciar-erome-windows.bat`.
-3. Deixe a janela preta aberta enquanto estiver baixando.
+3. Deixe a janela aberta enquanto estiver baixando.
 
-Na primeira execução, o arquivo instala automaticamente as dependências. Se o
-Windows mostrar um aviso de segurança, escolha **Executar**.
+Na primeira execução, o arquivo configura automaticamente o ambiente e instala
+as dependências necessárias.
 
-### Iniciar no Linux
+## Iniciar no Linux
 
-Abra o terminal na pasta do projeto e execute:
+Abra um terminal na pasta do projeto e execute:
 
 ```bash
 chmod +x iniciar-erome-linux.sh
 ./iniciar-erome-linux.sh
 ```
 
-Deixe o terminal aberto durante o download. Para encerrar, pressione `Ctrl+C`;
-isso fecha o servidor e libera a porta automaticamente.
+Deixe o terminal aberto durante o download. Para encerrar o programa, pressione
+`Ctrl+C`. O servidor será encerrado e a porta será liberada automaticamente.
 
-### Usar a extensão
+## Como usar
 
-1. Abra um álbum no Erome, sempre neste formato:
-    `https://www.erome.com/a/xxxxxxxx`.
+1. Abra um álbum no Erome, neste formato:
+
+   ```text
+   https://www.erome.com/a/xxxxxxxx
+   ```
+
 2. Clique no ícone **Erome Downloader** do navegador.
-3. A lateral será integrada à página.
-4. Marque **Usar automaticamente o link desta página** para preencher o endereço sem copiar e colar.
-5. Escolha se deseja ignorar vídeos ou imagens.
+3. A extensão aparecerá integrada na lateral direita da página.
+4. Marque **Usar automaticamente o link desta página** para preencher o link
+   atual sem copiar e colar.
+5. Opcionalmente, marque **Não baixar vídeos** ou **Não baixar imagens**.
 6. Clique em **Baixar álbum**.
 
-Durante o download, a lateral mostra a porcentagem e a quantidade de arquivos,
-por exemplo `75%` e `6/8 arquivos`. Ao terminar, os arquivos estarão em
-`Vídeos/EromeDownload/Nome do álbum/`.
-
-Para usar outra aba do Erome, basta trocar de aba. A lateral continuará aberta
-enquanto a extensão estiver ativada.
-
-## Usage
-
-Download a single album:
-
-```bash
-python dump.py -u https://www.erome.com/a/xxxxxxxx
-```
-
-Download many albums in one run by passing a text file of URLs:
-
-```bash
-python dump.py -f albums.txt
-```
-
-The file must contain one album URL per line. Blank lines and lines starting
-with `#` are ignored, so you can comment your batch lists:
+Durante o download, a extensão mostra a porcentagem e a quantidade de arquivos,
+por exemplo:
 
 ```text
-# Favorites
-https://www.erome.com/a/aaaaaaaa
-https://www.erome.com/a/bbbbbbbb
-
-# To re-download later
-https://www.erome.com/a/cccccccc
+75%
+6/8 arquivos
 ```
 
-Albums are downloaded sequentially; the `-c/--connections` option controls
-per-album parallelism. If one album fails, the batch continues with the next
-URL.
+A lateral continua disponível ao trocar de aba do Erome. Para fechá-la, clique
+novamente no ícone da extensão.
 
-## Arguments
+## Observações
 
-| Flag                   | Description                                                                       | Default |
-| ---------------------- | --------------------------------------------------------------------------------- | ------- |
-| `-u`, `--url`          | URL of a single album to download. One of `-u` or `-f` is required.               | —       |
-| `-f`, `--file`         | Path to a text file with one album URL per line. One of `-u` or `-f` is required. | —       |
-| `-c`, `--connections`  | Maximum number of simultaneous connections used while downloading an album.       | `5`     |
-| `-sv`, `--skip-videos` | Skip downloading videos.                                                          | off     |
-| `-si`, `--skip-images` | Skip downloading images.                                                          | off     |
-| `-r`, `--retries`      | Number of retry attempts per file on failure.                                     | `3`     |
-
-### Examples
-
-Download an album using 10 connections:
-
-```bash
-python dump.py -u https://www.erome.com/a/xxxxxxxx -c 10
-```
-
-Download a batch and skip all videos:
-
-```bash
-python dump.py -f albums.txt -sv
-```
-
-Increase the retry count for flaky connections:
-
-```bash
-python dump.py -u https://www.erome.com/a/xxxxxxxx -r 5
-```
-
-## Where are the files saved?
-
-Files are saved under the user's `Videos/EromeDownload/` folder. Each album
-gets its own subfolder named after the album title, and all files from that
-album are stored there.
-
-```
-Videos/
-└── EromeDownload/
-    └── Album Title/
-    ├── video.mp4
-    ├── image1.jpg
-    └── image2.jpg
-```
-
-## Running tests
-
-Install the development dependencies (which include the runtime ones) and run
-the suite with [pytest](https://docs.pytest.org/):
-
-```bash
-pip install -r requirements-dev.txt
-pytest
-```
+- O servidor local precisa estar aberto durante o download.
+- A extensão aceita somente links de álbuns do domínio `www.erome.com`.
+- Cada álbum é salvo em uma pasta própria dentro de `Vídeos/EromeDownload/`.
