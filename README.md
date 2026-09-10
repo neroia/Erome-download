@@ -1,7 +1,6 @@
-# Erome Downloader
+# 📥 Erome-download
 
-Extensão para Chrome e Chromium que adiciona um downloader na lateral das
-páginas do Erome.
+> Extensão para **Chrome** e **Chromium** que adiciona um painel lateral de download às páginas do Erome, permitindo baixar álbuns completos com um clique.
 
 Os arquivos são salvos automaticamente em:
 
@@ -9,47 +8,63 @@ Os arquivos são salvos automaticamente em:
 Vídeos/EromeDownload/Nome do álbum/
 ```
 
-## Baixar o projeto
+---
 
-### Opção 1: baixar como ZIP
+## 📋 Requisitos
 
-1. Abra o repositório no GitHub:
-   [github.com/neroia/Erome-download](https://github.com/neroia/Erome-download)
-2. Clique no botão **Code**.
-3. Clique em **Download ZIP**.
-4. Extraia o arquivo ZIP em uma pasta do computador.
+- Navegador **Chrome** ou **Chromium** (com suporte a extensões não compactadas)
+- **Git** (opcional, apenas para clonar o repositório)
 
-### Opção 2: clonar com Git
+---
 
-Se o Git estiver instalado, execute:
+## 📦 Baixando o projeto
+
+### Opção 1 — Baixar como ZIP
+
+1. Acesse o repositório: [github.com/neroia/Erome-download](https://github.com/neroia/Erome-download)
+2. Clique no botão **Code**
+3. Clique em **Download ZIP**
+4. Extraia o arquivo em uma pasta do computador
+
+### Opção 2 — Clonar com Git
 
 ```bash
 git clone https://github.com/neroia/Erome-download.git
 cd Erome-download
 ```
 
-Depois de baixar ou clonar, siga as instruções de instalação da extensão e
-inicialização do sistema abaixo.
+Após baixar ou clonar o projeto, siga as etapas de instalação abaixo.
 
-## Instalação da extensão
+---
 
-Essa etapa precisa ser feita apenas uma vez:
+## 🧩 Instalação da extensão
 
-1. Abra `chrome://extensions` no Chrome ou Chromium.
-2. Ative **Modo do desenvolvedor**.
-3. Clique em **Carregar sem compactação**.
-4. Selecione a pasta `extension/` deste projeto.
+> Esta etapa é feita apenas **uma vez**.
 
-## Iniciar no Windows
+1. Abra `chrome://extensions` no navegador
+2. Ative o **Modo do desenvolvedor** (canto superior direito)
+3. Clique em **Carregar sem compactação**
+4. Selecione a pasta `extension/` deste projeto
 
-1. Abra a pasta do projeto.
-2. Dê duplo clique em `iniciar-erome-windows.bat`.
-3. Deixe a janela aberta enquanto estiver baixando.
+---
 
-Na primeira execução, o arquivo configura automaticamente o ambiente e instala
-as dependências necessárias.
+## ▶️ Iniciando o servidor local
 
-## Iniciar no Linux
+A extensão depende de um servidor local para gerenciar os downloads. Escolha o guia correspondente ao seu sistema operacional.
+
+<details>
+<summary><strong>🪟 Windows</strong></summary>
+
+1. Abra a pasta do projeto
+2. Dê duplo clique em `iniciar-erome-windows.bat`
+3. Mantenha a janela aberta enquanto estiver baixando
+
+> Na primeira execução, o script configura automaticamente o ambiente e instala as dependências necessárias.
+
+</details>
+
+<details>
+<summary><strong>🐧 Linux</strong></summary>
 
 Abra um terminal na pasta do projeto e execute:
 
@@ -58,37 +73,53 @@ chmod +x iniciar-erome-linux.sh
 ./iniciar-erome-linux.sh
 ```
 
-Deixe o terminal aberto durante o download. Para encerrar o programa, pressione
-`Ctrl+C`. O servidor será encerrado e a porta será liberada automaticamente.
+Mantenha o terminal aberto durante o download. Para encerrar, pressione `Ctrl+C` — o servidor será finalizado e a porta liberada automaticamente.
 
-## Como usar
+</details>
 
-1. Abra um álbum no Erome, neste formato:
+---
+
+## 🚀 Como usar
+
+1. Abra um álbum no Erome, no formato:
 
    ```text
    https://www.erome.com/a/xxxxxxxx
    ```
 
-2. Clique no ícone **Erome Downloader** do navegador.
-3. A extensão aparecerá integrada na lateral direita da página.
-4. Marque **Usar automaticamente o link desta página** para preencher o link
-   atual sem copiar e colar.
-5. Opcionalmente, marque **Não baixar vídeos** ou **Não baixar imagens**.
-6. Clique em **Baixar álbum**.
+2. Clique no ícone **Erome Downloader** na barra do navegador
+3. O painel será exibido integrado à lateral direita da página
+4. Marque **Usar automaticamente o link desta página** para preencher o link atual sem copiar e colar
+5. *(Opcional)* Marque **Não baixar vídeos** ou **Não baixar imagens** conforme sua necessidade
+6. Clique em **Baixar álbum**
 
-Durante o download, a extensão mostra a porcentagem e a quantidade de arquivos,
-por exemplo:
+Durante o processo, a extensão exibe o progresso em tempo real:
 
 ```text
 75%
 6/8 arquivos
 ```
 
-A lateral continua disponível ao trocar de aba do Erome. Para fechá-la, clique
-novamente no ícone da extensão.
+> 💡 O painel lateral permanece disponível ao trocar de aba do Erome. Para fechá-lo, basta clicar novamente no ícone da extensão.
 
-## Observações
+---
 
-- O servidor local precisa estar aberto durante o download.
-- A extensão aceita somente links de álbuns do domínio `www.erome.com`.
-- Cada álbum é salvo em uma pasta própria dentro de `Vídeos/EromeDownload/`.
+## 📝 Observações
+
+| | |
+|---|---|
+| 🖥️ | O servidor local precisa estar aberto durante o download |
+| 🔗 | A extensão aceita apenas links de álbuns do domínio `www.erome.com` |
+| 📁 | Cada álbum é salvo em uma pasta própria dentro de `Vídeos/EromeDownload/` |
+
+---
+
+## 🙏 Créditos
+
+Este projeto é baseado no repositório original [M4p4/EromeDownloader](https://github.com/M4p4/EromeDownloader). Créditos ao autor pela base do projeto.
+
+---
+
+<p align="center">
+  <sub>Feito para facilitar o download de álbuns do Erome de forma simples e organizada.</sub>
+</p>
